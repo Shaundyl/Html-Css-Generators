@@ -108,4 +108,15 @@ class HtmlGenerator
         return $this;
     }
 
+    public function addButton($text, $attributes = [])
+    {
+        $button = '<button';
+        foreach ($attributes as $key => $value) {
+            $button .= ' ' . htmlspecialchars($key) . '="' . htmlspecialchars($value) . '"';
+        }
+        $button .= '>' . htmlspecialchars($text) . '</button>';
+        $this->html .= $button . "\n";
+        return $this;
+    }
+
 }
