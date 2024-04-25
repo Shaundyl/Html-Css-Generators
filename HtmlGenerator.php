@@ -2,7 +2,6 @@
 
 namespace MyNamespace;
 
-
 class HtmlGenerator
 {
     protected $html = '';
@@ -47,16 +46,6 @@ class HtmlGenerator
         return $this;
     }
 
-    public function openDiv($class = '', $content = ''){
-        $this->html .= "<div class=\"$class\"> $content\n";
-        return $this;
-    }
-
-    public function closeDiv(){
-        $this->html .= "</div>";
-        return $this;
-    }
-    
     // Method to add a div element
     public function addDiv($class = '', $content = '')
     {
@@ -64,12 +53,6 @@ class HtmlGenerator
         return $this;
     }
 
-    public function addH1($content, $style = '')
-    {
-        $styleAttr = $style ? "style=\"$style\"" : '';
-        $this->html .= "<h1 $styleAttr>$content</h1>\n";
-        return $this;
-    }
     // Method to add a table element
     public function addTable($attributes = [], $rows = [])
     {
@@ -101,6 +84,28 @@ class HtmlGenerator
     {
         echo $this->html;
     }
+
+    public function addLink($url, $text, $attributes = [])
+    {
+        $link = '<a href="' . htmlspecialchars($url) . '"';
+        foreach ($attributes as $key => $value) {
+            $link .= ' ' . htmlspecialchars($key) . '="' . htmlspecialchars($value) . '"';
+        }
+        $link .= '>' . htmlspecialchars($text) . '</a>';
+        $this->html .= $link . "\n";
+        return $this;
+    }
+
+    public function addHeader($level, $text, $attributes = [])
+    {
+        $headerType = 'h' . $level;
+        $header = '<' . $headerType;
+        foreach ($attributes as $key => $value) {
+            $header .= ' ' . htmlspecialchars($key) . '="' . htmlspecialchars($value) . '"';
+        }
+        $header .= '>' . htmlspecialchars($text) . '</' . $headerType . '>';
+        $this->html .= $header . "\n";
+        return $this;
+    }
+
 }
-
-
