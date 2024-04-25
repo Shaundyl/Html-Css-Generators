@@ -16,6 +16,8 @@ $html = $htmlGenerator->addTitle('Generated HTML')
                      ->addHeader(1, 'This is an h1 header', ['class' => 'header1'])
                      ->addHeader(2, 'This is an h2 header', ['id' => 'header2'])
                      ->addHeader(3, 'This is an h3 header', ['class' => 'header3'])
+                     ->addButton('Click me', ['class' => 'btn', 'id' => 'btn1'])
+                     ->addButton('Submit', ['class' => 'btn btn-primary', 'type' => 'submit'])
                      ->closeBody()
                      ->generate();
 
