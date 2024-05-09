@@ -32,22 +32,31 @@ class HtmlElement
         return $this;
     }
 
-        public function render()
+    public function render()
     {
         $html = "<{$this->tag}";
-
+    
         foreach ($this->attributes as $name => $value) {
-            $html .= "\n\t$name=\"$value\"";
+            $html .= " $name=\"$value\"";
         }
-
-        $html .= ">\n{$this->content}\n";
-
-        foreach ($this->children as $child) {
-            $html .= $child->render();
+    
+        // Check if the element is a void element
+        $isVoidElement = in_array($this->tag, ['area', 'base', 'br', 'col', 'embed', 'hr', 'img', 'input', 'link', 'meta', 'param', 'source', 'track', 'wbr']);
+    
+        if ($isVoidElement) {
+            $html .= " >\n";
+        } else {
+            $html .= ">\n{$this->content}\n";
+    
+            foreach ($this->children as $child) {
+                $html .= $child->render();
+            }
+    
+            $html .= "</{$this->tag}>\n";
         }
-
-        $html .= "</{$this->tag}>\n";
+    
         return $html;
     }
+    
 
 }
