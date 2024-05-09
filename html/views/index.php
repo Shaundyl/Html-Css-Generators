@@ -14,6 +14,11 @@ $html = HtmlGenerator::create('html')
                 HtmlGenerator::create('title')
                     ->setContent('Page Title')
             )
+            ->addChild(
+                HtmlGenerator::create('link')
+                    ->setAttribute('rel', 'stylesheet')
+                    ->setAttribute('href', 'style.css')
+            )
     )
     ->addChild(
         HtmlGenerator::create('body')
@@ -126,6 +131,89 @@ $html = HtmlGenerator::create('html')
                                     )
                             )
                     )
+            )
+            ->addChild(
+                HtmlGenerator::create('div')
+    ->setAttribute('class', 'banner_section layout_padding')
+    ->addChild(
+        HtmlGenerator::create('div')
+            ->setAttribute('class', 'container')
+            ->addChild(
+                HtmlGenerator::create('div')
+                    ->setAttribute('id', 'main_slider')
+                    ->setAttribute('class', 'carousel slide')
+                    ->setAttribute('data-ride', 'carousel')
+                    ->addChild(
+                        HtmlGenerator::create('div')
+                            ->setAttribute('class', 'carousel-inner')
+                            ->addChild(
+                                // Carousel items
+                                HtmlGenerator::create('div')
+                                    ->setAttribute('class', 'carousel-item active')
+                                    ->addChild(
+                                        HtmlGenerator::create('div')
+                                            ->setAttribute('class', 'row')
+                                            ->addChild(
+                                                HtmlGenerator::create('div')
+                                                    ->setAttribute('class', 'col-sm-12')
+                                                    ->addChild(
+                                                        HtmlGenerator::create('div')
+                                                            ->setAttribute('class', 'banner_taital')
+                                                            ->addChild(
+                                                                HtmlGenerator::create('h1')
+                                                                    ->setAttribute('class', 'outstanding_text')
+                                                                    ->setContent('Outstanding')
+                                                            )
+                                                            ->addChild(
+                                                                HtmlGenerator::create('h1')
+                                                                    ->setAttribute('class', 'coffee_text')
+                                                                    ->setContent('Coffee Shop')
+                                                            )
+                                                            ->addChild(
+                                                                HtmlGenerator::create('p')
+                                                                    ->setAttribute('class', 'there_text')
+                                                                    ->setContent('There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,')
+                                                            )
+                                                            ->addChild(
+                                                                HtmlGenerator::create('div')
+                                                                    ->setAttribute('class', 'learnmore_bt')
+                                                                    ->addChild(
+                                                                        HtmlGenerator::create('a')
+                                                                            ->setAttribute('href', '#')
+                                                                            ->setContent('Learn More')
+                                                                    )
+                                                            )
+                                                    )
+                                            )
+                                    )
+                                    // Add other carousel items similarly
+                            )
+                    )
+                    ->addChild(
+                        // Carousel controls
+                        HtmlGenerator::create('a')
+                            ->setAttribute('class', 'carousel-control-prev')
+                            ->setAttribute('href', '#main_slider')
+                            ->setAttribute('role', 'button')
+                            ->setAttribute('data-slide', 'prev')
+                            ->addChild(
+                                HtmlGenerator::create('i')
+                                    ->setAttribute('class', 'fa fa-angle-left')
+                            )
+                    )
+                    ->addChild(
+                        HtmlGenerator::create('a')
+                            ->setAttribute('class', 'carousel-control-next')
+                            ->setAttribute('href', '#main_slider')
+                            ->setAttribute('role', 'button')
+                            ->setAttribute('data-slide', 'next')
+                            ->addChild(
+                                HtmlGenerator::create('i')
+                                    ->setAttribute('class', 'fa fa-angle-right')
+                            )
+                    )
+            )
+    )
             )
     )
     ->render();
