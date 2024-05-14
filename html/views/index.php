@@ -1,18 +1,32 @@
 <?php
 
-echo "<!DOCTYPE html>\n";
-
 require_once __DIR__ . '/../../html/src/HtmlGenerator/HtmlGenerator.php';
 
 use HtmlGenerator\HtmlGenerator;
 
+// Start output buffering
+ob_start();
+
+// Print the DOCTYPE declaration
+echo "<!DOCTYPE html>\n";
+
 // Create HTML structure
 $html = HtmlGenerator::create('html')
+    ->setAttribute('lang', 'en')
     ->addChild(
         HtmlGenerator::create('head')
             ->addChild(
+                HtmlGenerator::create('meta')
+                    ->setAttribute('charset', 'UTF-8')
+            )
+            ->addChild(
+                HtmlGenerator::create('meta')
+                    ->setAttribute('name', 'viewport')
+                    ->setAttribute('content', 'width=device-width, initial-scale=1.0')
+            )
+            ->addChild(
                 HtmlGenerator::create('title')
-                    ->setContent('Page Title')
+                    ->setContent('USJR EDP CENTER')
             )
             ->addChild(
                 HtmlGenerator::create('link')
@@ -23,204 +37,102 @@ $html = HtmlGenerator::create('html')
     ->addChild(
         HtmlGenerator::create('body')
             ->addChild(
-                HtmlGenerator::create('div')
-                    ->setAttribute('class', 'header_section')
+                HtmlGenerator::create('nav')
                     ->addChild(
                         HtmlGenerator::create('div')
-                            ->setAttribute('class', 'container-fluid')
+                            ->setAttribute('class', 'logo')
                             ->addChild(
-                                HtmlGenerator::create('nav')
-                                    ->setAttribute('class', 'navbar navbar-expand-lg navbar-light bg-light')
+                                HtmlGenerator::create('img')
+                                    ->setAttribute('src', 'usjr.png')
+                                    ->setAttribute('alt', 'Logo')
+                            )
+                    )
+                    ->addChild(
+                        HtmlGenerator::create('ul')
+                            ->addChild(
+                                HtmlGenerator::create('li')
+                                    ->setAttribute('class', 'nav-item active')
                                     ->addChild(
-                                        HtmlGenerator::create('div')
-                                            ->setAttribute('class', 'logo')
-                                            ->addChild(
-                                                HtmlGenerator::create('a')
-                                                    ->setAttribute('href', 'index.html')
-                                                    ->addChild(
-                                                        HtmlGenerator::create('img')
-                                                            ->setAttribute('src', 'images/logo.png')
-                                                    )
-                                            )
+                                        HtmlGenerator::create('a')
+                                            ->setAttribute('class', 'nav-link')
+                                            ->setAttribute('href', 'index.html')
+                                            ->setContent('Home')
                                     )
+                            )
+                            ->addChild(
+                                HtmlGenerator::create('li')
+                                    ->setAttribute('class', 'nav-item')
                                     ->addChild(
-                                        HtmlGenerator::create('button')
-                                            ->setAttribute('class', 'navbar-toggler')
-                                            ->setAttribute('type', 'button')
-                                            ->setAttribute('data-toggle', 'collapse')
-                                            ->setAttribute('data-target', '#navbarNav')
-                                            ->setAttribute('aria-controls', 'navbarNav')
-                                            ->setAttribute('aria-expanded', 'false')
-                                            ->setAttribute('aria-label', 'Toggle navigation')
-                                            ->addChild(
-                                                HtmlGenerator::create('span')
-                                                    ->setAttribute('class', 'navbar-toggler-icon')
-                                            )
+                                        HtmlGenerator::create('a')
+                                            ->setAttribute('class', 'nav-link')
+                                            ->setAttribute('href', 'about.html')
+                                            ->setContent('About Us')
                                     )
+                            )
+                            ->addChild(
+                                HtmlGenerator::create('li')
+                                    ->setAttribute('class', 'nav-item')
                                     ->addChild(
-                                        HtmlGenerator::create('div')
-                                            ->setAttribute('class', 'collapse navbar-collapse')
-                                            ->setAttribute('id', 'navbarNav')
-                                            ->addChild(
-                                                HtmlGenerator::create('ul')
-                                                    ->setAttribute('class', 'navbar-nav ml-auto')
-                                                    ->addChild(
-                                                        HtmlGenerator::create('li')
-                                                            ->setAttribute('class', 'nav-item active')
-                                                            ->addChild(
-                                                                HtmlGenerator::create('a')
-                                                                    ->setAttribute('class', 'nav-link')
-                                                                    ->setAttribute('href', 'index.html')
-                                                                    ->setContent('Home')
-                                                            )
-                                                    )
-                                                    ->addChild(
-                                                        HtmlGenerator::create('li')
-                                                            ->setAttribute('class', 'nav-item')
-                                                            ->addChild(
-                                                                HtmlGenerator::create('a')
-                                                                    ->setAttribute('class', 'nav-link')
-                                                                    ->setAttribute('href', 'about.html')
-                                                                    ->setContent('About Us')
-                                                            )
-                                                    )
-                                                    ->addChild(
-                                                        HtmlGenerator::create('li')
-                                                            ->setAttribute('class', 'nav-item')
-                                                            ->addChild(
-                                                                HtmlGenerator::create('a')
-                                                                    ->setAttribute('class', 'nav-link')
-                                                                    ->setAttribute('href', 'gallery.html')
-                                                                    ->setContent('Gallery')
-                                                            )
-                                                    )
-                                                    ->addChild(
-                                                        HtmlGenerator::create('li')
-                                                            ->setAttribute('class', 'nav-item')
-                                                            ->addChild(
-                                                                HtmlGenerator::create('a')
-                                                                    ->setAttribute('class', 'nav-link')
-                                                                    ->setAttribute('href', 'services.html')
-                                                                    ->setContent('Services')
-                                                            )
-                                                    )
-                                                    ->addChild(
-                                                        HtmlGenerator::create('li')
-                                                            ->setAttribute('class', 'nav-item')
-                                                            ->addChild(
-                                                                HtmlGenerator::create('a')
-                                                                    ->setAttribute('class', 'nav-link')
-                                                                    ->setAttribute('href', 'contact.html')
-                                                                    ->setContent('Contact Us')
-                                                            )
-                                                    )
-                                                    ->addChild(
-                                                        HtmlGenerator::create('li')
-                                                            ->setAttribute('class', 'nav-item')
-                                                            ->addChild(
-                                                                HtmlGenerator::create('a')
-                                                                    ->setAttribute('class', 'nav-link')
-                                                                    ->addChild(
-                                                                        HtmlGenerator::create('i')
-                                                                            ->setAttribute('class', 'fa fa-search')
-                                                                            ->setAttribute('aria-hidden', 'true')
-                                                                    )
-                                                            )
-                                                    )
-                                            )
+                                        HtmlGenerator::create('a')
+                                            ->setAttribute('class', 'nav-link')
+                                            ->setAttribute('href', 'gallery.html')
+                                            ->setContent('Gallery')
+                                    )
+                            )
+                            ->addChild(
+                                HtmlGenerator::create('li')
+                                    ->setAttribute('class', 'nav-item')
+                                    ->addChild(
+                                        HtmlGenerator::create('a')
+                                            ->setAttribute('class', 'nav-link')
+                                            ->setAttribute('href', 'services.html')
+                                            ->setContent('Services')
+                                    )
+                            )
+                            ->addChild(
+                                HtmlGenerator::create('li')
+                                    ->setAttribute('class', 'nav-item')
+                                    ->addChild(
+                                        HtmlGenerator::create('a')
+                                            ->setAttribute('class', 'nav-link')
+                                            ->setAttribute('href', 'contact.html')
+                                            ->setContent('Contact Us')
+                                    )
+                            )
+                            ->addChild(
+                                HtmlGenerator::create('li')
+                                    ->addChild(
+                                        HtmlGenerator::create('a')
+                                            ->setAttribute('href', 'login.html')
+                                            ->setContent('Log in')
+                                    )
+                            )
+                            ->addChild(
+                                HtmlGenerator::create('li')
+                                    ->addChild(
+                                        HtmlGenerator::create('a')
+                                            ->setAttribute('href', 'signup.html')
+                                            ->setContent('Sign up')
                                     )
                             )
                     )
             )
             ->addChild(
                 HtmlGenerator::create('div')
-    ->setAttribute('class', 'banner_section layout_padding')
-    ->addChild(
-        HtmlGenerator::create('div')
-            ->setAttribute('class', 'container')
-            ->addChild(
-                HtmlGenerator::create('div')
-                    ->setAttribute('id', 'main_slider')
-                    ->setAttribute('class', 'carousel slide')
-                    ->setAttribute('data-ride', 'carousel')
+                    ->setAttribute('class', 'container')
                     ->addChild(
-                        HtmlGenerator::create('div')
-                            ->setAttribute('class', 'carousel-inner')
-                            ->addChild(
-                                // Carousel items
-                                HtmlGenerator::create('div')
-                                    ->setAttribute('class', 'carousel-item active')
-                                    ->addChild(
-                                        HtmlGenerator::create('div')
-                                            ->setAttribute('class', 'row')
-                                            ->addChild(
-                                                HtmlGenerator::create('div')
-                                                    ->setAttribute('class', 'col-sm-12')
-                                                    ->addChild(
-                                                        HtmlGenerator::create('div')
-                                                            ->setAttribute('class', 'banner_taital')
-                                                            ->addChild(
-                                                                HtmlGenerator::create('h1')
-                                                                    ->setAttribute('class', 'outstanding_text')
-                                                                    ->setContent('Outstanding')
-                                                            )
-                                                            ->addChild(
-                                                                HtmlGenerator::create('h1')
-                                                                    ->setAttribute('class', 'coffee_text')
-                                                                    ->setContent('Coffee Shop')
-                                                            )
-                                                            ->addChild(
-                                                                HtmlGenerator::create('p')
-                                                                    ->setAttribute('class', 'there_text')
-                                                                    ->setContent('There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,')
-                                                            )
-                                                            ->addChild(
-                                                                HtmlGenerator::create('div')
-                                                                    ->setAttribute('class', 'learnmore_bt')
-                                                                    ->addChild(
-                                                                        HtmlGenerator::create('a')
-                                                                            ->setAttribute('href', '#')
-                                                                            ->setContent('Learn More')
-                                                                    )
-                                                            )
-                                                    )
-                                            )
-                                    )
-                                    // Add other carousel items similarly
-                            )
+                        HtmlGenerator::create('h1')
+                            ->setContent('Welcome to University of San Jose- Recoletos')
                     )
                     ->addChild(
-                        // Carousel controls
-                        HtmlGenerator::create('a')
-                            ->setAttribute('class', 'carousel-control-prev')
-                            ->setAttribute('href', '#main_slider')
-                            ->setAttribute('role', 'button')
-                            ->setAttribute('data-slide', 'prev')
-                            ->addChild(
-                                HtmlGenerator::create('i')
-                                    ->setAttribute('class', 'fa fa-angle-left')
-                            )
+                        HtmlGenerator::create('p')
+                            ->setContent('University life feels a little different here. At USJ-R, students have cultural, professional, and spiritual opportunities that transform individuals holistically.')
                     )
-                    ->addChild(
-                        HtmlGenerator::create('a')
-                            ->setAttribute('class', 'carousel-control-next')
-                            ->setAttribute('href', '#main_slider')
-                            ->setAttribute('role', 'button')
-                            ->setAttribute('data-slide', 'next')
-                            ->addChild(
-                                HtmlGenerator::create('i')
-                                    ->setAttribute('class', 'fa fa-angle-right')
-                            )
-                    )
-            )
-    )
             )
     )
     ->render();
 
-// Output the HTML content
 echo $html;
-
 
 // Get the output buffer contents and clean the buffer
 $htmlContent = ob_get_clean();
