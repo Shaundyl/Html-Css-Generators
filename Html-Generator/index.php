@@ -305,8 +305,6 @@ $html = HtmlGenerator::create('html')
                 HtmlGenerator::create('br')
             )
     )
-    ->render();
-
-$html->saveToFile('libretto.html');
+    ->saveToFile('libretto.html');
     
 echo "HTML file 'libretto.html' has been generated successfully.";
