@@ -35,32 +35,6 @@ Generates the HTML representation of the element. It starts by opening the tag a
 - `saveToFile($file)`:
 Saves the rendered HTML to a specified file.
 
-<h2>Installation</h2>
-<p>1. Download the src/HtmlGenerator folder, and ensure you have all the file structure.</p>
-<p>2. Include the necessary files in your PHP script using require_once.</p>
-
-<h2>Usage</h2>
-<h3>1. Including the Library</h3>
-<p>To include the library, use the following require_once statements and use the HtmlGenerator. Also print the DOCTYPE declaration.</p>
-```php
-$htmlElement = new HtmlElement('div');
-
-
-<h3>2. Creating an HTML Element</h3>
-<p>To create an HTML element, use the 'HtmlGenerator::create' method:</p>
-
-<h3>3. Setting Attributes</h3>
-<p>You can set attributes for the HTML element using the 'setAttribute' method:</p>
-
-<h3>4. Setting Content</h3>
-<p>For non-void elements, you can set the inner content using the 'setContent' method:</p>
-
-<h3>5. Adding Child Elements</h3>
-<p>To nest elements, use the 'addChild' method to add a child HtmlElement to a parent HtmlElement:</p>
-
-<h3>6. Rendering and Saving the HTML</h3>
-<p>Once all elements are created and configured, you can save the HTML into a file using the render method:</p>
-
 ---
 # CSSGenerator Class 
 This class is designed to generate CSS files. It provides methods to add formats and media to the stylesheet and then generate the final CSS code and write it to a file.
