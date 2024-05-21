@@ -58,4 +58,10 @@ class HtmlElement implements HtmlElementInterface
 
         return $html;
     }
+    
+    public function saveToFile($file)
+    {
+        $html = "<!DOCTYPE html>\n" . $this->render();
+        file_put_contents($file, $html);
+    }
 }
