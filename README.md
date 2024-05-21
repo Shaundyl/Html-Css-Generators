@@ -1,7 +1,7 @@
 # HTML - CSS GENERATORS
 ---
 
-# HTMLGenerator Class
+# HTMLGenerator
 <p>This HtmlGenerator is a simple PHP library designed to help you generate HTML elements programmatically. It allows you to create HTML elements, set attributes, add content and children, and render the HTML structure. Additionally, you can save the generated HTML to a file.</p>
 
 <h2>Features</h2>
@@ -9,6 +9,9 @@
 <li>Add child elements to build nested HTML structures.</li>
 <li>Support for self-closing (void) HTML elements.</li>
 <li>Save the generated HTML to a file.</li>
+
+# HTMLElement Class
+<p>The HtlmElement.php has a class called HtmlElement. This class is designed to represent an HTML element in a structured way, it allows for easy manipulation and rendering of HTML content programmatically.</p>
 
 ## Class Properties
 - `$tag` (protected): Stores the name of the HTML element
@@ -34,6 +37,21 @@ Generates the HTML representation of the element. It starts by opening the tag a
 
 - `saveToFile($file)`:
 Saves the rendered HTML to a specified file.
+---
+
+# HTMLGenerator Class
+<li>Serves as a factory for creating instances of HtmlElement objects. </li>
+<li>The primary purpose of the HtmlGenerator class is to abstract away the details of creating HtmlElement objects. Instead of directly instantiating HtmlElement objects throughout the application, developers can use the HtmlGenerator::create() method. This approach centralizes the object creation logic, making the code cleaner and more maintainable. Additionally, it allows for potential extension or modification of the object creation process in the future without affecting the rest of the application.</li>
+
+---
+
+# HTMLElementInterface Class
+<p>The HtmlElementInterface interface, defined within the HtmlGenerator\Interfaces namespace, serves as a blueprint for classes that represent HTML elements in a structured manner.</p>
+
+---
+
+# HTMLGeneratorInterface Class
+<p>The primary purpose of the HtmlGeneratorInterface is to define a standard structure for classes that act as factories for creating HTML elements. By enforcing the presence of a create method that returns an HtmlElementInterface implementation, it ensures that any class implementing HtmlGeneratorInterface will provide a consistent way to create HTML elements. </p>
 
 ---
 # CSSGenerator Class 
