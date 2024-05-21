@@ -8,4 +8,5 @@ interface HtmlElementInterface
     public function setContent($content);
     public function addChild(HtmlElementInterface $child);
     public function render();
+    public function saveToFile($file);
 }
