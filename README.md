@@ -1,4 +1,65 @@
-*insert Html Generator Documentation Here*
+# HTML - CSS GENERATORS
+---
+
+# HTMLGenerator Class
+<p>This HtmlGenerator is a simple PHP library designed to help you generate HTML elements programmatically. It allows you to create HTML elements, set attributes, add content and children, and render the HTML structure. Additionally, you can save the generated HTML to a file.</p>
+
+<h2>Features</h2>
+<li>Create and render HTML elements with attributes and content.</li>
+<li>Add child elements to build nested HTML structures.</li>
+<li>Support for self-closing (void) HTML elements.</li>
+<li>Save the generated HTML to a file.</li>
+
+## Class Properties
+- `$tag` (protected): Stores the name of the HTML element
+- `$attributes` (protected array): An associative array holding attribute names and values for the HTML element.
+- `$content` (protected string): A string representing the inner content of the HTML element.
+- `$children` (protected array): An array to hold child elements, allowing for nested structures.
+
+## Methods
+- `__construct($tag)`:
+Accepts a single argument $tag, which sets the initial value of the $tag property. This method initializes the object with a specific HTML tag.
+
+- `setAttribute($name, $value)`:
+Adds an attribute to the $attribute array. Allows setting attributes like id, class, etc.
+
+- `setContent($content)`:
+Sets the content (inner HTML) of the element.
+
+- `addChild(HtmlElementInterface $child)`:
+Adds a child element to $children array. This supports creating complex nested structures.
+
+- `render()`:
+Generates the HTML representation of the element. It starts by opening the tag and adding all attributes. Then, based on whether the element is void (like <img>), it either closes immediately or adds content and recursively renders children elements before closing the tag.
+
+- `saveToFile($file)`:
+Saves the rendered HTML to a specified file.
+
+<h2>Installation</h2>
+<p>1. Download the src/HtmlGenerator folder, and ensure you have all the file structure.</p>
+<p>2. Include the necessary files in your PHP script using require_once.</p>
+
+<h2>Usage</h2>
+<h3>1. Including the Library</h3>
+<p>To include the library, use the following require_once statements and use the HtmlGenerator. Also print the DOCTYPE declaration.</p>
+```php
+$htmlElement = new HtmlElement('div');
+
+
+<h3>2. Creating an HTML Element</h3>
+<p>To create an HTML element, use the 'HtmlGenerator::create' method:</p>
+
+<h3>3. Setting Attributes</h3>
+<p>You can set attributes for the HTML element using the 'setAttribute' method:</p>
+
+<h3>4. Setting Content</h3>
+<p>For non-void elements, you can set the inner content using the 'setContent' method:</p>
+
+<h3>5. Adding Child Elements</h3>
+<p>To nest elements, use the 'addChild' method to add a child HtmlElement to a parent HtmlElement:</p>
+
+<h3>6. Rendering and Saving the HTML</h3>
+<p>Once all elements are created and configured, you can save the HTML into a file using the render method:</p>
 
 ---
 # CSSGenerator Class 
